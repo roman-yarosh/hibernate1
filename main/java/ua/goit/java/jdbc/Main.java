@@ -17,6 +17,7 @@ public class Main {
         Main main = applicationContext.getBean(Main.class);
         main.start();
 
+
         System.out.println("test");
     }
 
