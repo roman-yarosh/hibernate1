@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-autowire="byName">
 
-   <bean id="main" class="ua.goit.java.jdbc.Main">
-       <property name="employeeController" ref="employeeController"/>
-   </bean>
 
-    <bean class="ua.goit.java.jdbc.controllers.EmployeeController" id="employeeController">
-        <property name="employeeDAO" ref="employeeDAO"/>
+    <bean id="main" class="ua.goit.java.jdbc.Main">
     </bean>
 
-    <bean class="ua.goit.java.jdbc.model.hibernate.HibernateEmployeeDAO" id="employeeDAO">
-        <property name="sessionFactory" ref="sessionFactory"/>
+    <bean id="employeeController" class="ua.goit.java.jdbc.controllers.EmployeeController"/>
+    <bean id="dishController" class="ua.goit.java.jdbc.controllers.DishController"/>
+    <bean id="orderController" class="ua.goit.java.jdbc.controllers.OrderController"/>
+
+    <bean id="employeeDAO" class="ua.goit.java.jdbc.model.hibernate.HibernateEmployeeDAO"/>
+    <bean id="dishDAO" class="ua.goit.java.jdbc.model.hibernate.HibernateDishDAO"/>
+    <bean id="orderDAO" class="ua.goit.java.jdbc.model.hibernate.HibernateOrderDAO"/>
+
+    <bean class="ua.goit.java.jdbc.model.jdbc.JdbcEmployeeDAO" id="jdbcEmployeeDAO">
+        <property name="dataSource" ref="dataSource"/>
+
     </bean>
-
-   <bean class="ua.goit.java.jdbc.model.jdbc.JdbcEmployeeDAO" id="jdbcEmployeeDAO">
-       <property name="dataSource" ref="dataSource"/>
-
-   </bean>
 
     <bean class="com.mchange.v2.c3p0.ComboPooledDataSource" id="dataSource">
         <property name="driverClass" value="${jdbc.driver.class}"/>

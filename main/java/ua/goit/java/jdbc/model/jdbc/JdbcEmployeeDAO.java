@@ -40,4 +40,14 @@ public class JdbcEmployeeDAO implements EmployeeDAO{
     public List<Employee> findAll() {
         return null;
     }
+
+    @Override
+    public void remove(Employee employee) {
+
+    }
+
+    @Override
+    public Employee findByName(String name) {
+        return null;
+    }
 }

@@ -14,4 +14,8 @@ public interface EmployeeDAO {
     void save(Employee employee);
 
     List<Employee> findAll();
+
+    Employee findByName(String name);
+
+    void remove(Employee employee);
 }
